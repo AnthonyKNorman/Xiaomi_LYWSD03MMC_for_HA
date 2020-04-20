@@ -1,7 +1,7 @@
 # Xiaomi_LYWSD03MMC_for_HA
 Collecting data via Bluetooth from the Xiaomi LYWSD03MMC Temperature Display using ESP32 running Micropython
 
-##Introduction
+## Introduction
 I have developed this project to integrate the Xiaomi LYWSD03MMC LCD temperature and Humidity display with Home Assistant.
 
 
