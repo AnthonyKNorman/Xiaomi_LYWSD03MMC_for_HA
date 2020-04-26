@@ -10,9 +10,9 @@ import gc
 gc.collect()
 import ble
 
-ssid = 'FARLEIGH'
-password = 'MK4Lxq7aiuuU'
-mqtt_server = '192.168.0.99'
+ssid = 'your_ssid'
+password = 'your password'
+mqtt_server = 'your_mqtt address'
 #EXAMPLE IP ADDRESS
 #mqtt_server = '192.168.1.144'
 client_id = ubinascii.hexlify(machine.unique_id())
