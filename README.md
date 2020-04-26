@@ -4,12 +4,11 @@ Collecting data via Bluetooth from the Xiaomi LYWSD03MMC Temperature Display usi
 ## Introduction
 I have developed this project to integrate the Xiaomi LYWSD03MMC LCD temperature and Humidity display with Home Assistant.
 
-
 <p align="center">
   <img width="460" src="resources/Xiaomi_LYWSD03MMC.png">
 </p>
 
-The display outputs Temperature, Humidity and Battery level using Bluetooth Low Energy (BLE). This means we need some sort of hub to collect the data and render it in a way that Home Assistant understands. I initially chose to use a Raspberry Pi W for this job as it has built-in support for BLE, but this repository uses a much cheaper ESP32. 
+The display outputs Temperature, Humidity and Battery level using Bluetooth Low Energy (BLE). This means we need some sort of hub to collect the data and render it in a way that Home Assistant understands. I initially chose to use a Raspberry Pi W for this job as it has built-in support for BLE, but this repository uses a much cheaper ESP32. I have used an ESP32 dev board with a built-in usb serial interface and also an ESP32-CAM board with a separate USB to Serial converter. 
 
 MQTT is an efficient way for remote devices to communicate with Home Assistant, so I added suport for this. At start up, the program will automatically find all the LYWSD03MMC devices on your network and will start publishing their data via MQTT
 ## Building The Solution
