@@ -28,6 +28,26 @@ From then on program the firmware starting at address 0x1000:
 
 ```esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 460800 write_flash -z 0x1000 esp32spiram-idf4-20191220-v1.12.bin```
 
-Using a terminal emulator program such as putty
+Note - if you are using windows the port will be the com port that you ESP32 is connected to e.g.
+```esptool.py --chip esp32 --port com3 erase_flash```
+
+Using a terminal emulator program, such as putty, connect to the ESP32 board at 115200 BAUD.
+You should see a screen like this.
+
+<p align="center">
+  <img width="800" src="resources/Micropython Prompt.png">
+</p>
+
+Now close the terminal emulator and install ampy using the instructions from Adafruit here https://learn.adafruit.com/micropython-basics-load-files-and-run-code/install-ampy
+
+Now you need to download the files:
+* ble.py
+* mqtt.py
+* main.py
+
+Now run  ```ampy -p com3 put ble.py```
+and ```ampy-p com3 put mqtt.py```
+
+Don't upload main.py yet.
 
 
