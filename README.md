@@ -52,10 +52,10 @@ mqtt_server = 'your_mqtt address'
 ```
 so that the program can connect to your wifi and to your mqtt server
 
-Now run  ```ampy -p com3 put ble.py```
-and ```ampy-p com3 put mqtt.py```
+Now run  ```ampy -p /dev/ttyUSB0 put ble.py```
+and ```ampy-p /dev/ttyUSB0 put mqtt.py```
 
-Don't upload main.py yet and. of course, substitute the correct prot for your setup.
+Don't upload main.py yet and. of course, substitute the correct port for your setup.
 
 Reconnect your terminal emulator and reset the ESP32.
 You should start to see an output like this. 
