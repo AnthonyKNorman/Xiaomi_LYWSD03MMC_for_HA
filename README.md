@@ -107,7 +107,6 @@ Once all of the devices have been interrogated you will see a list like this
 Found:
 b'\xa4\xc18Gc6' LYWSD03MMC
 b'\xa4\xc18\xcf\xbc/' LYWSD03MMC
-(0, b'\xa4\xc18Gc6', 'LYWSD03MMC')
 ```
 
 The program will then get readings from each device.
