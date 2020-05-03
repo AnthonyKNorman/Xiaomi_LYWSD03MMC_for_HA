@@ -50,9 +50,9 @@ class ble:
         self.notify = False
         self.index = 0
         self.scan = False
-        self.notify_data = b''
-        self.char_data = b''
-        self.address = b'aaaaaa'
+        self.notify_data = bytearray(30)
+        self.char_data = bytearray(30)
+        self.address = bytearray(6)
         self.temp = 0
         self.humidity = 0
         self.battery = 0
@@ -84,6 +84,7 @@ class ble:
                 print ('Char data',self.char_data)
                 try:
                     self.name = self.char_data.decode("utf-8")
+                    print ('self.name',self.name)
                 except Exception as e:
                     debug('Setup ' + str(e))
                 self.name = self.name[:len(self.name)-1]               # chop the trailing zero
