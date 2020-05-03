@@ -10,9 +10,9 @@ import gc
 gc.collect()
 import ble
 
-ssid = 'your_ssid'
-password = 'your password'
-mqtt_server = 'your_mqtt address'
+ssid = 'FARLEIGH'
+password = 'MK4Lxq7aiuuU'
+mqtt_server = '192.168.0.99'
 #EXAMPLE IP ADDRESS
 #mqtt_server = '192.168.1.144'
 client_id = ubinascii.hexlify(machine.unique_id())
@@ -52,7 +52,7 @@ myBLE.setup()
 print ('Found:')
 for a in myBLE.addresses:
     type, address, name = a
-    print (address,name)
+    ble.debug ('Found Address: {} Name: {}'.format(ble.prettify(address),name))
 
 while True:
     # cycle through the captured addresses
