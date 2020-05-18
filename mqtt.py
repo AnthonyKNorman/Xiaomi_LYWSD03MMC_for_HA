@@ -8,7 +8,7 @@ import esp
 esp.osdebug(None)
 import gc
 gc.collect()
-import ble
+import ble, ntptime
 
 ssid = 'FARLEIGH'
 password = 'MK4Lxq7aiuuU'
@@ -42,6 +42,12 @@ print('Connection successful')
 print(station.ifconfig())
 
 try:
+    ntptime.settime()
+    print (ble.timestamp())
+except Exception as e:
+    ble.debug('Error: ntptime settime ' + str(e))
+
+try:
   client = connect()
 except OSError as e:
   restart_and_reconnect()
@@ -54,14 +60,25 @@ for a in myBLE.addresses:
     type, address, name = a
     ble.debug ('Found Address: {} Name: {}'.format(ble.prettify(address),name))
 
+lastday = 0
 while True:
+    # update the RTC once a day
+    today = ble.timestamp('day')
+    if today != lastday:
+        try:
+            ntptime.settime()
+            lastday = today
+            ble.debug('Time set from server')
+        except Exception as e:
+            ble.debug('Error: ntptime ' + str(e))
+
     # cycle through the captured addresses
     for a in myBLE.addresses:       
-        print (a)
         type, myBLE.address, name = a
         # if this is a LYWSD03MMC'
         if name == 'LYWSD03MMC':
             # if we are successful reading the values
+            print ('\r\n----------------------------------------------------------')
             if(myBLE.get_reading()):
                 message = '{"temperature": "' + str(myBLE.temp) + '", '
                 message = message + '"humidity": "' + str(myBLE.humidity) + '", '
