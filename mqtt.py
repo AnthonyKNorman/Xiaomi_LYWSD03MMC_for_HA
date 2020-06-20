@@ -10,8 +10,8 @@ import gc
 gc.collect()
 import ble, ntptime
 
-ssid = 'FARLEIGH'
-password = 'MK4Lxq7aiuuU'
+ssid = 'your_ssid'
+password = 'your_wifi_password'
 mqtt_server = '192.168.0.99'
 #EXAMPLE IP ADDRESS
 #mqtt_server = '192.168.1.144'
