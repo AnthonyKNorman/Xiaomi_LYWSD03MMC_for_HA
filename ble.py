@@ -34,13 +34,20 @@ def timestamp(type='timestamp'):
     yy,mm,dd,dy,hh,MM,ss,ms= machine.RTC().datetime()
     if type == 'day': 
         return dd
+    elif type == 'date':
+        return '{:04d}{:02d}{:02d}'.format(yy,mm,dd)
+
     else:
         return '{:04d}-{:02d}-{:02d} {:02d}:{:02d}:{:02d}'.format(yy,mm,dd,hh,MM,ss)
 
 def debug(message, fname = 'ble.log'):
-    f = open(fname,'a')
-    f.write(timestamp() + ' ' + message +'\n')
-    f.close()
+    try:
+        f = open(timestamp(type='date') + fname,'a')
+        f.write(timestamp() + ' ' + message +'\n')
+        f.close()
+    except Exceptions as e:
+        print('debug', str(e))
+        
     print(message)
     
 class ble:
