@@ -1,4 +1,4 @@
-import time
+import utime as time
 from umqtt.simple import MQTTClient
 import ubinascii
 import machine
@@ -9,9 +9,10 @@ esp.osdebug(None)
 import gc
 gc.collect()
 import ble, ntptime
+import uos
 
-ssid = 'your_ssid'
-password = 'your_wifi_password'
+ssid = 'FARLEIGH'
+password = 'MK4Lxq7aiuuU'
 mqtt_server = '192.168.0.99'
 #EXAMPLE IP ADDRESS
 #mqtt_server = '192.168.1.144'
@@ -59,6 +60,28 @@ print ('Found:')
 for a in myBLE.addresses:
     type, address, name = a
     ble.debug ('Found Address: {} Name: {}'.format(ble.prettify(address),name))
+    
+    
+def cleanup():
+    dir = uos.listdir()
+    for f in dir:
+        print(f)
+        try:
+            year = int(f[:4])
+            month = int(f[4:6])
+            mday = int(f[6:8])
+            print (year, month, mday)
+            filedate = time.mktime( (year, month, mday, 0, 0, 0, 0, 0))
+            year, month, mday, hour, minute, second, weekday, yearday = time.localtime()
+            two_days_ago = time.mktime((year, month, mday-2, 0, 0, 0, 0, 0))
+            print(filedate, two_days_ago)
+            if filedate < two_days_ago:
+                uos.remove(f)
+            
+            
+        except Exception as e:
+            print ('cleanup', str(e))
+            pass
 
 lastday = 0
 while True:
@@ -72,6 +95,9 @@ while True:
         except Exception as e:
             ble.debug('Error: ntptime ' + str(e))
 
+    # cleanup filesystem
+    cleanup()
+    
     # cycle through the captured addresses
     for a in myBLE.addresses:       
         type, myBLE.address, name = a
