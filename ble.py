@@ -28,7 +28,7 @@ _ARRAYSIZE = const(20)
     
 
 def prettify(mac_string):
-    return ':'.join('{:2x}'.format(b) for b in mac_string)
+    return ':'.join('{:02x}'.format(b) for b in mac_string)
 
 def timestamp(type='timestamp'):
     yy,mm,dd,dy,hh,MM,ss,ms= machine.RTC().datetime()
