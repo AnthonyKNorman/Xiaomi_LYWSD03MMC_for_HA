@@ -11,8 +11,8 @@ gc.collect()
 import ble, ntptime
 import uos
 
-ssid = 'FARLEIGH'
-password = 'MK4Lxq7aiuuU'
+ssid = 'yourssid'
+password = 'yourpass'
 mqtt_server = '192.168.0.99'
 #EXAMPLE IP ADDRESS
 #mqtt_server = '192.168.1.144'
