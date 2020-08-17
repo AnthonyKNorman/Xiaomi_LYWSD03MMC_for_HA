@@ -11,8 +11,8 @@ gc.collect()
 import ble, ntptime
 import uos
 
-ssid = 'yourssid'
-password = 'yourpass'
+ssid = 'FARLEIGH'
+password = 'MK4Lxq7aiuuU'
 mqtt_server = '192.168.0.99'
 #EXAMPLE IP ADDRESS
 #mqtt_server = '192.168.1.144'
@@ -111,7 +111,7 @@ while True:
                 message = message + '"batt": "' + str(myBLE.batteryLevel) + '", '
                 message = message + '"voltage": "' + str(myBLE.voltage) + '"}'
                 print (message)
-                topic = topic_pub + '/' + ''.join('{:2x}'.format(b) for b in myBLE.address)
+                topic = topic_pub + '/' + ''.join('{:02x}'.format(b) for b in myBLE.address)
                 print (topic)
                 try:
                     client.publish(topic, message)
