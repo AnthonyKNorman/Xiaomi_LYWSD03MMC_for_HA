@@ -1,3 +1,5 @@
+**NOTE: I AM NO LONGER MAINTAINING THIS REPOSITORY AS THE DISPLAY IS NOW SUPPORTED BY ESPHOME**
+
 # Xiaomi_LYWSD03MMC_for_HA
 Collecting data via Bluetooth from the Xiaomi LYWSD03MMC Temperature Display using ESP32 running Micropython
 
